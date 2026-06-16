@@ -34,10 +34,18 @@ export const whyChooseUs: { title: string; description: string }[] = [
   { title: "Commitment to Quality", description: "A relentless focus on client satisfaction and workforce development impact." },
 ];
 
-/* ---------- Clients (logos / names for marquee) ---------- */
-export const clients: string[] = [
-  "Perodua", "Toll Malaysia", "GDX", "Carrefour", "Giant", "Guardian",
-  "Cold Storage", "Bafco Asia", "JVC", "UPM", "UKM", "MSU",
+/* ---------- Client logos for the marquee ---------- */
+export const clientLogos: { src: string; name: string; w: number }[] = [
+  { src: "/clients/carrefour.png", name: "Carrefour", w: 189 },
+  { src: "/clients/giant.png", name: "Giant", w: 299 },
+  { src: "/clients/guardian.png", name: "Guardian", w: 486 },
+  { src: "/clients/cold-storage.png", name: "Cold Storage", w: 356 },
+  { src: "/clients/jvc.png", name: "JVC", w: 276 },
+  { src: "/clients/philips.png", name: "Philips", w: 128 },
+  { src: "/clients/tnt.png", name: "TNT", w: 150 },
+  { src: "/clients/ceva.png", name: "CEVA", w: 219 },
+  { src: "/clients/lc-waikiki.png", name: "LC Waikiki", w: 937 },
+  { src: "/clients/puteri.png", name: "Puteri", w: 256 },
 ];
 
 /* ---------- Popular programs (home) ---------- */
