@@ -1,26 +1,170 @@
 @import "tailwindcss";
 
+/* ============================================================
+   Prime HR Academy Malaysia — Brand Design Tokens
+   Deep navy + metallic chrome/steel + azure. NO yellow.
+   ============================================================ */
+
+@theme {
+  /* Brand — navy */
+  --color-navy: #14276b;
+  --color-navy-deep: #060e3a;
+  --color-navy-soft: #24408c;
+  --color-blue: #2e5bc0;
+  --color-blue-soft: #5a86d6;
+
+  /* Metallic / steel */
+  --color-steel: #9aa7c2;
+  --color-steel-light: #e6eaf2;
+  --color-chrome: #c8ceda;
+
+  /* Amber — warm spark (echoes the HRD Corp logo) */
+  --color-amber: #f5a524;
+  --color-amber-deep: #b8730a;
+  --color-amber-soft: #fef2da;
+
+  /* Teal — cool spark (contrast to amber) */
+  --color-teal: #0d9488;
+  --color-teal-deep: #0f766e;
+  --color-teal-soft: #d6f3ef;
+
+  /* Neutrals */
+  --color-ink: #0f172a;
+  --color-slate: #475569;
+  --color-mist: #e2e8f0;
+  --color-pearl: #f6f8fc;
+  --color-paper: #ffffff;
+
+  /* Utility */
+  --color-whatsapp: #25d366;
+
+  /* Fonts (wired in layout via next/font) */
+  --font-display: var(--font-montserrat), system-ui, sans-serif;
+  --font-body: var(--font-inter), system-ui, sans-serif;
+  --font-accent: var(--font-fraunces), Georgia, serif;
+
+  /* Type scale (Major Third 1.250) */
+  --text-2xs: 0.6875rem;
+
+  /* Radius */
+  --radius-xl2: 1.25rem;
+
+  /* Easing */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #0f172a;
+  --gradient-hero: linear-gradient(135deg, #14276b 0%, #060e3a 100%);
+  --gradient-steel: linear-gradient(180deg, #ffffff 0%, #c8ceda 100%);
+  --gradient-azure: linear-gradient(135deg, #2e5bc0 0%, #14276b 100%);
+  --shadow-navy: 0 18px 45px rgba(6, 14, 58, 0.12);
+  --shadow-navy-lg: 0 30px 70px rgba(6, 14, 58, 0.22);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* Base element styles live in @layer base so Tailwind utilities
+   (e.g. text-white on a heading inside a dark section) win over them. */
+@layer base {
+  * {
+    border-color: var(--color-mist);
+  }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+    line-height: 1.08;
+    color: var(--color-navy);
+  }
+
+  ::selection {
+    background: var(--color-blue);
+    color: #fff;
+  }
+
+  /* Focus ring — navy at 40% */
+  :where(a, button, input, textarea, select, [tabindex]):focus-visible {
+    outline: 2px solid rgba(20, 39, 107, 0.5);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------- Utilities ---------- */
+
+.container-prime {
+  width: 100%;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+@media (min-width: 768px) {
+  .container-prime { padding-inline: 2.5rem; }
+}
+
+/* Chrome / metallic text (the "PRIME HR" wordmark feel) */
+.text-chrome {
+  background: linear-gradient(180deg, #ffffff 0%, #c8ceda 45%, #8c97b3 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Steel hairline divider */
+.hairline {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-steel), transparent);
+}
+
+/* Eyebrow label */
+.eyebrow {
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-blue);
+}
+
+/* Subtle grid + noise backdrop for dark sections */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(154, 167, 194, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(154, 167, 194, 0.06) 1px, transparent 1px);
+  background-size: 56px 56px;
+}
+
+/* Marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee var(--marquee-duration, 36s) linear infinite;
+}
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
 }
