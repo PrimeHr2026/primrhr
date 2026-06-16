@@ -14,15 +14,31 @@ export function isDbConfigured() {
   return Boolean(uri);
 }
 
+const options = {
+  // Fail fast in serverless instead of hanging the whole function.
+  serverSelectionTimeoutMS: 8000,
+  connectTimeoutMS: 8000,
+  socketTimeoutMS: 20000,
+  maxPoolSize: 10,
+};
+
+function connect(): Promise<MongoClient> {
+  // Reset the cached promise if the connection fails, so the next
+  // request retries instead of reusing a rejected promise.
+  return new MongoClient(uri!, options).connect().catch((e) => {
+    clientPromise = null;
+    if (global._primehrMongo) global._primehrMongo = undefined;
+    throw e;
+  });
+}
+
 function getClient(): Promise<MongoClient> {
   if (!uri) throw new Error("MONGODB_URI is not configured");
   if (process.env.NODE_ENV === "development") {
-    if (!global._primehrMongo) {
-      global._primehrMongo = new MongoClient(uri).connect();
-    }
+    if (!global._primehrMongo) global._primehrMongo = connect();
     return global._primehrMongo;
   }
-  if (!clientPromise) clientPromise = new MongoClient(uri).connect();
+  if (!clientPromise) clientPromise = connect();
   return clientPromise;
 }
 
