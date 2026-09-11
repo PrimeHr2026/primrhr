@@ -5,6 +5,7 @@ import { HomeHero } from "@/components/sections/HomeHero";
 import { ClientMarquee } from "@/components/sections/ClientMarquee";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ReviewForm } from "@/components/sections/ReviewForm";
+import { PosterViewer } from "@/components/sections/PosterViewer";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
@@ -203,6 +204,51 @@ export default function HomePage() {
               </StaggerItem>
             ))}
           </Stagger>
+        </div>
+      </section>
+
+      {/* REAL IMPACT — poster */}
+      <section className="container-prime py-20 sm:py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="h-0.5 w-6 rounded-full bg-amber" />
+              <span className="eyebrow">Real impact</span>
+            </div>
+            <h2 className="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">
+              Practical training. Real people. <span className="text-teal-deep">Real impact.</span>
+            </h2>
+            <p className="mt-4 max-w-xl leading-relaxed text-slate">
+              From engaging in-house sessions to teambuilding, certifications and graduations —
+              a look at the people and organizations we&apos;ve worked with across Malaysia.
+            </p>
+            <ul className="mt-7 space-y-3">
+              {[
+                "Engaging learning, lasting results",
+                "Building stronger teams",
+                "Knowledge for a better tomorrow",
+                "Appreciating people, inspiring growth",
+              ].map((item) => (
+                <li key={item} className="flex items-center gap-3 font-semibold text-navy">
+                  <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-teal-soft text-teal-deep">
+                    <Check className="size-3.5" />
+                  </span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+            <Button href="/programs" variant="secondary" className="mt-8">
+              View training gallery <ArrowRight className="size-4" />
+            </Button>
+          </div>
+          <Reveal className="mx-auto w-full max-w-sm lg:justify-self-end">
+            <PosterViewer
+              src="/promo/poster-impact.png"
+              alt="Prime HR Academy Malaysia — practical training, real people, real impact"
+              w={1024}
+              h={1536}
+            />
+          </Reveal>
         </div>
       </section>
 

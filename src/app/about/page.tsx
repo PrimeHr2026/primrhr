@@ -202,6 +202,24 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* BRAND PRESENCE — billboard visual */}
+      <section className="container-prime py-16 sm:py-20">
+        <Reveal className="overflow-hidden rounded-3xl ring-1 ring-mist">
+          <div className="relative aspect-[2/1] w-full">
+            <Image
+              src="/promo/billboard.png"
+              alt="Prime HR Academy Malaysia brand campaign visual"
+              fill
+              className="object-cover"
+              sizes="100vw"
+            />
+          </div>
+        </Reveal>
+        <p className="mt-4 text-center text-sm text-slate">
+          Our brand, built for every channel — from digital to out-of-home.
+        </p>
+      </section>
+
       {/* ACCREDITATIONS & FRAMEWORKS */}
       <section className="relative overflow-hidden bg-navy-deep py-20 text-white sm:py-24">
         <div className="pointer-events-none absolute -right-40 top-1/4 size-[32rem] rounded-full bg-amber/[0.07] blur-[130px]" />

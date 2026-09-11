@@ -1,11 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { Metadata } from "next";
-import { ArrowRight, Clock, Monitor, BadgeCheck, Check, GraduationCap, ChevronRight } from "lucide-react";
+import { ArrowRight, Clock, Monitor, BadgeCheck, Check, GraduationCap, ChevronRight, Download } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CtaBand } from "@/components/sections/CtaBand";
 import { ProgramCatalog } from "@/components/sections/ProgramCatalog";
 import { GalleryGrid } from "@/components/sections/GalleryGrid";
+import { PosterViewer } from "@/components/sections/PosterViewer";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
 import { flagshipPrograms } from "@/data/programs";
@@ -168,6 +169,38 @@ export default function ProgramsPage() {
           <SectionHeading eyebrow="Full catalog" title="Browse programs by category" intro="A selection of our most-requested programs. Every program can be customized and run in-house." />
           <div className="mt-10">
             <ProgramCatalog />
+          </div>
+        </div>
+      </section>
+
+      {/* Catalog at a glance — poster */}
+      <section className="container-prime py-20 sm:py-24">
+        <div className="grid items-center gap-12 lg:grid-cols-[0.85fr_1.15fr]">
+          <Reveal className="mx-auto w-full max-w-sm">
+            <PosterViewer
+              src="/promo/poster-catalog.png"
+              alt="Prime HR Academy Malaysia — full training programmes catalog, one-page overview"
+              w={1024}
+              h={1536}
+            />
+          </Reveal>
+          <div>
+            <div className="flex items-center gap-3">
+              <span className="h-0.5 w-6 rounded-full bg-amber" />
+              <span className="eyebrow">Quick reference</span>
+            </div>
+            <h2 className="mt-3 text-3xl font-extrabold text-navy sm:text-4xl">Prefer a one-page overview?</h2>
+            <p className="mt-4 max-w-xl leading-relaxed text-slate">
+              All 12 of our core programme categories — from Employment Act 1955 to AI for HR
+              Professionals — on a single page. View it online or download it to share
+              internally.
+            </p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Button href="/downloads/prime-hr-training-catalog.pdf" external variant="amber" size="lg">
+                <Download className="size-5" /> Download catalog
+              </Button>
+              <Button href="/contact" variant="secondary" size="lg">Ask about a programme</Button>
+            </div>
           </div>
         </div>
       </section>
