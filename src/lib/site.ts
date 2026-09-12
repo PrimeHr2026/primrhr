@@ -10,7 +10,7 @@ export const SITE = {
   url: "https://www.primehracademy.com",
   description:
     "Prime HR Academy Malaysia is an HRD Corp accredited training, consultancy and organizational development company — delivering HRD Corp claimable HR, leadership and compliance programs led by master trainer Ram.G.",
-  email: "v1muru@gmail.com",
+  email: "ramg@primehracademy.com",
   phone: "+60 19-237 1374",
   phoneRaw: "+60192371374",
   whatsapp: "60192371374",
