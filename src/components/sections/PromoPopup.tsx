@@ -15,7 +15,7 @@ export function PromoPopup() {
   const reduce = useReducedMotion();
 
   useEffect(() => {
-    if (sessionStorage.getItem(SESSION_KEY)) return;
+    if (sessionStorage.getItem(SESSION_KEY) || window.location.hash === "#review") return;
     const timer = setTimeout(() => {
       setOpen(true);
       sessionStorage.setItem(SESSION_KEY, "1");

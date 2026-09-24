@@ -8,7 +8,7 @@ import { PromoPopup } from "@/components/sections/PromoPopup";
 
 export function Shell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const bare = pathname.startsWith("/admin");
+  const bare = pathname.startsWith("/admin") || pathname === "/review/qr";
 
   if (bare) return <>{children}</>;
 

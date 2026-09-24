@@ -6,6 +6,7 @@ import { ClientMarquee } from "@/components/sections/ClientMarquee";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { ReviewForm } from "@/components/sections/ReviewForm";
 import { PosterViewer } from "@/components/sections/PosterViewer";
+import { HashScroll } from "@/components/sections/HashScroll";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Reveal, Stagger, StaggerItem } from "@/components/motion/Reveal";
 import { Button } from "@/components/ui/Button";
@@ -36,6 +37,7 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={[faqSchema(faqs), breadcrumbSchema([{ name: "Home", url: "/" }])]} />
+      <HashScroll />
       <HomeHero />
       <ClientMarquee />
 
@@ -255,7 +257,7 @@ export default function HomePage() {
       <Testimonials />
 
       {/* LEAVE A REVIEW */}
-      <section className="container-prime py-20 sm:py-24">
+      <section id="review" className="container-prime scroll-mt-28 py-20 sm:py-24">
         <Reveal className="overflow-hidden rounded-3xl border border-mist shadow-[var(--shadow-navy)] lg:grid lg:grid-cols-[0.85fr_1.15fr]">
           <div className="relative bg-navy-deep bg-grid p-9 text-white sm:p-11">
             <div className="pointer-events-none absolute -left-12 -top-12 size-48 rounded-full bg-amber/15 blur-3xl" />
